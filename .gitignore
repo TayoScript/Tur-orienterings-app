@@ -1,0 +1,13 @@
+# For backend
+turorienteringapp/backend/node_modules/
+turorienteringapp/backend/config.env
+turorienteringapp/backend/.DS_Store
+
+# For frontend
+turorienteringapp/frontend/node_modules/
+
+# General ignores
+.DS_Store
+.vscode/
+.history/
+.hintrc

@@ -1,0 +1,102 @@
+/* Base styles for buttons */
+button {
+    border: none;
+    color: white;
+    padding: 10px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s;
+    white-space: nowrap;
+    margin-bottom: -15px;
+    background-color: #4CAF50;
+    width: 100%;
+    margin-right: 350px;
+}
+
+button:hover {
+    background-color: #6ed9fa;
+    color: black;
+}
+
+.saveButton {
+    position: absolute;
+    top: 9px;
+    left: 660px;
+    text-align: center;
+    width: 10%;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.cancelButton {
+    position: absolute;
+    top: 60px;
+    left: 660px;
+    width: 10%;
+    padding: 10px;
+}
+
+.newrute-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Adjusted to correct the position */
+    z-index: 10;
+    cursor: pointer;
+    font-family: 'Pacifico', cursive;
+    font-size: 38px;
+    font-weight: bold;
+    color: #f90b0b;
+    text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000, 4px 4px 0 #000; /*Some 3D look */
+}
+
+.newrute-logo:hover {
+    cursor: pointer;
+}
+
+.relativeContainer {
+    position: relative;
+}
+
+.mapContainer {
+    width: 100%;
+    height: 400px;
+}
+
+.controlContainer {
+    display: flex;
+    justify-content: center; /* Keep  centered!! */
+    position: absolute;
+    top: 10px;
+    right: 350px; /* Change the place of start a route button */
+    z-index: 2;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #ffeeee;
+    border: 1px solid #ff0000;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.NewRouteBackButton {
+    color: white;
+    padding: 10px 26px;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s;
+    background-color: #4CAF50;
+    width: auto;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10; /* Button is above other elements */
+}

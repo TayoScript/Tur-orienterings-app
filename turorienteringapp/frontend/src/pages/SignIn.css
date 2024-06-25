@@ -1,0 +1,127 @@
+/* Styling for the background of the sign-in component. */
+.signin-background {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;  
+    background-repeat: no-repeat; 
+    background-position: center;  
+    justify-content: center; 
+    max-height: 100%; 
+    overflow: auto; 
+    
+    
+}
+
+/* Styling for the main sign-in form container. */
+.signin-container {
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    overflow: hidden;
+    width: auto;
+    margin-top: 60px; /*move the sing in container little bit down*/
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-weight: 500;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border 0.9s;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Styling for the main submit button. */
+button {
+    width: 10%;
+    padding: 12px;
+    text-decoration: none;
+    border: 1px solid #4CAF50;  /* A green border */
+ 
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+.register-prompt {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register-link {
+    color: #4CAF50;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+/*
+ * These for styling  element (forget password) 
+ */
+.forgot-password {
+    text-align: left; /* To align the text to the left*/
+    margin-bottom: 12px; /* To add some space below the link */
+}
+
+.forgot-password span {
+    color: #4CAF50; /* Green color to indicate it's clickable */
+    cursor: pointer;
+    text-decoration: underline; /* Underline to show it's a link */
+}
+
+
+.signin-logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 38px;
+    font-weight: bold;
+    color: #4CAF50;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 20px; /* Additional margin for spacing */
+}
+
+.container-or-element-class {
+    overflow-x: hidden;
+  }
+  
+  /* style for the error message while sining in
+   */
+  .error-message {
+    color: red;
+    margin-bottom: 15px;  
+    font-size: 14px;  
+    font-weight: bold;    
+}

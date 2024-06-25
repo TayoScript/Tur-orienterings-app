@@ -1,0 +1,103 @@
+/* Base styling for the HomePage component */
+
+/* flex- home page will be two parts */
+.home-page {
+    display: flex;
+    height: 100vh; /*full height*/
+}
+
+/* Style for the left side of  home page */
+.home-page .left {
+    width: 50%;
+    background-color: lightgreen;
+    padding: 100px 20px;
+    text-align: left;
+    position: relative;
+}
+
+/* Style for the right side of the home page */
+.home-page .right {
+    width: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Vertically centers the content in this div */
+}
+
+/* Paragraph styling for the sliding sentences */
+.home-page p {
+    font-size: 1.2rem;
+    color: #4CAF50;
+}
+
+/* Styling for the logo (TurRuter) above the buttons */
+.nav-logo {
+    font-size: 2.9rem; /* Increase the logo's font size */
+    margin-bottom: 10px; /* Add some space below the logo */
+    color: #4CAF50; /* Green color to match the theme */
+    text-decoration: none; /* No underlines for the logo text */
+}
+
+/* Styling for the buttons on the right side */
+.home-page .right button {
+    margin: 10px 20px; /* 20 for space between button og 10 for space with log*/
+    padding: 15px 30px; /* 15 for height, 30 for wide   */
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: #45a049;
+    color: white;
+    width: 150px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for the buttons  */
+.home-page .right button:hover {
+    background-color: #61dafb;
+    color: #333;
+}
+
+/* Styl3 for the sentence section on the left side */
+.sentence-section {
+    padding: 50px 0;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    width: 90%;
+}
+
+.sentence-section p {
+    font-size: 40px;
+    color: #059b16;
+}
+
+
+/*
+ *
+ */
+.home-page .right .footer-about {
+    position: absolute;
+    bottom: 10px;
+    left: 1130px;
+    font-size: 16px;
+    text-decoration: none;
+    text-decoration: none;
+    color: #059b16;
+    font-weight: bold;
+}
+
+
+/*  Link component styling*/
+.home-page .right .footer-about a, 
+.home-page .right .footer-about a:visited {
+    text-decoration: none;
+    color: #059b16; /* Dark green color */
+}
+
+/* Hover styling */
+.home-page .right .footer-about a:hover {
+    color: #1cf7f3;
+}
