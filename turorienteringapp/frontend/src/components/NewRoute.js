@@ -4,8 +4,8 @@ import mapboxgl from "mapbox-gl";
 import axios from "axios"; // Used to make HTTP requests
 import "./NewRoute.css";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiY2hyaXNhMjUxMSIsImEiOiJjbGtkcjRhNnkwa3JhM2t1ODFtbHppd2JmIn0.9DC6eUXzdFclnzb_3LCOtg";
+// Set the Mapbox access token from environment variable
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 //New Rute function
 const NewRoute = () => {

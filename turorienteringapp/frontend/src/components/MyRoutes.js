@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { length } from '@turf/turf'; // for distance calculation
 import './MyRoutes.css';
 
-// Set the Mapbox access token
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2hyaXNhMjUxMSIsImEiOiJjbGtkcjRhNnkwa3JhM2t1ODFtbHppd2JmIn0.9DC6eUXzdFclnzb_3LCOtg';
+// Set the Mapbox access token from environment variable
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 // Colors for route lines
 const colors = ['#F00', '#0F0', '#00F', '#FF0', '#0FF', '#F0F', '#888', '#123456', '#654321', '#ABCDEF'];

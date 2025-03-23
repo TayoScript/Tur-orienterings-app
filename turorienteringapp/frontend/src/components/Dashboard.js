@@ -4,8 +4,8 @@ import './Dashboard.css';
 import mapboxgl from 'mapbox-gl';
 import { decodeToken } from './AuthUtils';
 
-// Our access tokens
-mapboxgl.accessToken = 'Ypk.eyJ1IjoiY2hyaXNhMjUxMSIsImEiOiJjbGtkcjRhNnkwa3JhM2t1ODFtbHppd2JmIn0.9DC6eUXzdFclnzb_3LCOtg';
+// Set the Mapbox access token from environment variable
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 const Dashboard = () => {
     const navigate = useNavigate();
