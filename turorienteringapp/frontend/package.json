@@ -2,6 +2,7 @@
   "name": "turorienteringapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@turf/turf": "^6.5.0",
     "axios": "^1.5.1",

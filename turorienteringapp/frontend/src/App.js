@@ -99,6 +99,9 @@ function App() {
 
                         {/*Page to Welcome */}
                         <Route path="/welcome" element={<Welcome />} />
+                        
+                        {/* Catch-all route for unmatched paths */}
+                        <Route path="*" element={<HomePage />} />
                     </Routes>
                 </Router>
             </div>
