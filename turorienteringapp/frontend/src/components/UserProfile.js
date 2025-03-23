@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./UserProfile.css";
 import UpdatePassword from './UpdatePassword';
+import API_BASE_URL from '../config';
 
 const UserProfile = () => {
   // State to store user's profile data
@@ -22,15 +23,15 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        const token = localStorage.getItem('token');
         const response = await fetch(
-          "http://localhost:8000/api/v1/users/myProfile",
+          `${API_BASE_URL}/api/v1/users/myProfile`,
           {
             method: "GET",
             headers: {
-              "content-type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("token"),
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
             },
-            credentials: "same-origin",
           }
         );
 
@@ -68,15 +69,15 @@ const UserProfile = () => {
 
     // Sends the updated userdata to the backend via a patch request, which then persists the updated userdata.
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch(
-        "http://localhost:8000/api/v1/users/updateMyProfile",
+        `${API_BASE_URL}/api/v1/users/updateMyProfile`,
         {
           method: "PATCH",
           headers: {
-            "content-type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
-          credentials: "same-origin",
           body: JSON.stringify(userData),
         }
       );

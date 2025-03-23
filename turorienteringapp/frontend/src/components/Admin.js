@@ -3,6 +3,7 @@ import './Admin.css';
 import AdminDeleteUser from './AdminDeleteUser';
 import AdminDeleteRoute from './AdminDeleteRoute';
 import AdminPromoteUser from './AdminPromoteUser';
+import API_BASE_URL from '../config';
 
 const Admin = () => {
     const [users, setUsers] = useState([]);
@@ -21,8 +22,10 @@ const Admin = () => {
                 throw new Error('No token found');
             }
 
-            const response = await fetch('http://localhost:8000/api/v1/users', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/users`, {
+                method: 'GET',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 }
             });
@@ -48,8 +51,10 @@ const Admin = () => {
             if (!token) {
                 throw new Error('Authentication token not found');
             }
-            const response = await fetch('http://localhost:8000/api/v1/tourRoutes', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/tourRoutes`, {
+                method: 'GET',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 }
             });
@@ -89,9 +94,10 @@ const Admin = () => {
                 return;
             }
 
-            const response = await fetch(`http://localhost:8000/api/v1/users/promoteToAdmin/${userId}`, {
+            const response = await fetch(`${API_BASE_URL}/api/v1/users/promoteToAdmin/${userId}`, {
                 method: 'PATCH',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 }
             });
@@ -129,9 +135,10 @@ const Admin = () => {
                 return;
             }
 
-            const response = await fetch(`http://localhost:8000/api/v1/tourRoutes/${routeId}`, {
+            const response = await fetch(`${API_BASE_URL}/api/v1/tourRoutes/${routeId}`, {
                 method: 'DELETE',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 }
             });
@@ -171,9 +178,10 @@ const Admin = () => {
                 return;
             }
 
-            const response = await fetch(`http://localhost:8000/api/v1/users/${userId}`, {
+            const response = await fetch(`${API_BASE_URL}/api/v1/users/${userId}`, {
                 method: 'DELETE',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 }
             });

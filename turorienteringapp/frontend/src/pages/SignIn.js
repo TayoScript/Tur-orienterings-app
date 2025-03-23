@@ -4,6 +4,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useAuth } from '../components/AuthContext';
 import { decodeToken } from '../components/AuthUtils';
 import './SignIn.css';
+import API_BASE_URL from '../config';
 
 function SignIn() {
     /* Initializing state for email, password, and error message */
@@ -51,7 +52,7 @@ function SignIn() {
 
         try {
             // Sending a POST request to the backend to login
-            const response = await fetch('http://localhost:8000/api/v1/users/login', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/users/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin',

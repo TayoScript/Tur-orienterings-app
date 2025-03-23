@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DeleteUser.css';
+import API_BASE_URL from '../config';
 
 const DeleteUser = () => {
   const navigate = useNavigate();
@@ -12,15 +13,15 @@ const DeleteUser = () => {
    * Catches and logs any errors that occur during the process.
    */
   
-  const handleDelete = async () => {
+  const handleDeleteAccount = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/v1/users/deleteMyProfile', {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${API_BASE_URL}/api/v1/users/deleteMyProfile`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-        credentials: 'same-origin',
+          'Authorization': `Bearer ${token}`
+        }
       });
 
       if (!response.ok) {
@@ -41,7 +42,7 @@ const DeleteUser = () => {
       <p>Are you sure you want to delete your account?</p>
       <p>This action cannot be undone.</p>
       <div className="delete-buttons">
-        <button className="delete-account-btn" onClick={handleDelete}>Delete Account</button>
+        <button className="delete-account-btn" onClick={handleDeleteAccount}>Delete Account</button>
         <button className="cancel-btn" onClick={() => navigate(-1)}>Cancel</button>
       </div>
     </div>

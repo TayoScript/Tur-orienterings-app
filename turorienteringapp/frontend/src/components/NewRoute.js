@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import mapboxgl from "mapbox-gl";
 import axios from "axios"; // Used to make HTTP requests
 import "./NewRoute.css";
+import API_BASE_URL from '../config';
 
 // Set the Mapbox access token from environment variable
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -15,6 +16,11 @@ const NewRoute = () => {
   const [isCreatingRoute, setIsCreatingRoute] = useState(false);
   const [markers, setMarkers] = useState([]);
   const navigate = useNavigate(); // Navigation function
+  const [routeName, setRouteName] = useState("");
+  const [routeDescription, setRouteDescription] = useState("");
+  const [estimatedTime, setEstimatedTime] = useState("");
+  const [difficultyLevel, setDifficultyLevel] = useState("");
+  const [error, setError] = useState("");
 
   // Initialization of the map
   useEffect(() => {
@@ -159,7 +165,7 @@ const NewRoute = () => {
     // Send a POST request to the backend to save the route
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/tourRoutes/newTourRoute",
+        `${API_BASE_URL}/api/v1/tourRoutes/newTourRoute`,
         { name, coordinates, published },
         {
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
@@ -218,6 +224,45 @@ const NewRoute = () => {
   const handleBackClick = () => {
     navigate('/dashboard');
   };
+
+  // Submit the route to the backend
+  const submitRoute = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      
+      if (points.length < 2) {
+        setError("A route must have at least 2 points.");
+        return;
+      }
+
+      if (!routeName.trim()) {
+        setError("Please provide a name for your route.");
+        return;
+      }
+
+      const routeData = {
+        name: routeName,
+        coordinates: points.map((point) => [point.lng, point.lat]),
+        description: routeDescription || "No description provided",
+        length: calculateRouteLength(points),
+        difficultyLevel,
+        estimatedTime: parseInt(estimatedTime) || 0,
+      };
+
+      const response = await axios.post(
+        `${API_BASE_URL}/api/v1/tourRoutes/newTourRoute`,
+        routeData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      // ... existing code ...
+    } catch (error) {
+      // ... existing code ...
+    }
+  };
+
   /*----------------------------------------------------------------------------------> */
   /* Render the elements */
   return (

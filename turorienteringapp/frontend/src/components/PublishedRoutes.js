@@ -6,6 +6,7 @@ import ReactDOMServer from 'react-dom/server';
 import { length } from '@turf/turf';  // Import specific function from Turf for calculating distance
 import './PublishedRoutes.css';
 import RoutePopup from './RoutePopup';
+import API_BASE_URL from '../config';
 
 // Set the Mapbox access token from environment variable
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -22,9 +23,9 @@ const PublishedRoutes = () => {
     // Fetch published routes from the backend with authorization
     const fetchRoutes = async () => {
         try {
-            const token = localStorage.getItem('token');// token from local storge
-            const response = await axios.get('http://localhost:8000/api/v1/tourRoutes/getAllPublishedTourRoutes', {
-                headers: { Authorization: `Bearer ${token}` } //----->added the token to to authorization header
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`${API_BASE_URL}/api/v1/tourRoutes/getAllPublishedTourRoutes`, {
+                headers: { Authorization: `Bearer ${token}` }
             });
             const publishedRoutes = response.data.data.tourRoutes || [];
             setRoutes(publishedRoutes);

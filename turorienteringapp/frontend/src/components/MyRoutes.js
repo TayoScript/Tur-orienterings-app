@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { length } from '@turf/turf'; // for distance calculation
 import './MyRoutes.css';
+import API_BASE_URL from '../config';
 
 // Set the Mapbox access token from environment variable
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -21,21 +22,15 @@ const MyRoutes = () => {
 
     // Function to delete a route
     const deleteRoute = async (routeId) => {
-        const userToken = localStorage.getItem('token');
-        if (!userToken) {
-            setError("Login required to perform this action.");
-            return;
-        }
-
         try {
-            await axios.delete(`http://localhost:8000/api/v1/tourRoutes/${routeId}`, {
-                headers: { 'Authorization': `Bearer ${userToken}` }
+            const token = localStorage.getItem('token');
+            await axios.delete(`${API_BASE_URL}/api/v1/tourRoutes/${routeId}`, {
+                headers: { Authorization: `Bearer ${token}` }
             });
-            // Refresh routes after delete route
-            await fetchRoutes();
-        } catch (err) {
-            setError("Error deleting route.");
-            console.error(err);
+            // After deletion, refresh routes
+            fetchRoutes();
+        } catch (error) {
+            console.error('Error deleting route:', error);
         }
     };
 
@@ -48,8 +43,8 @@ const MyRoutes = () => {
         }
 
         try {
-            const response = await axios.get('http://localhost:8000/api/v1/tourRoutes/getIndividualUsersTourRoutes', {
-                headers: { 'Authorization': `Bearer ${userToken}` }
+            const response = await axios.get(`${API_BASE_URL}/api/v1/tourRoutes/getIndividualUsersTourRoutes`, {
+                headers: { Authorization: `Bearer ${userToken}` }
             });
             setRoutes(response.data.data.tourRoutes || []);
         } catch (err) {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./UpdatePassword.css";
+import API_BASE_URL from '../config';
 
 const UpdatePassword = ({ close }) => {
   const [password, setPassword] = useState('');
@@ -79,13 +80,19 @@ const UpdatePassword = ({ close }) => {
   
     // Proceed with the API call if validations pass
     try {
-      const response = await fetch('http://localhost:8000/api/v1/users/updateMyPassword', {
+      const token = localStorage.getItem('token');
+      
+      const response = await fetch(`${API_BASE_URL}/api/v1/users/updateMyPassword`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ password, confirmPassword }),
+        body: JSON.stringify({
+          passwordCurrent: '',
+          password,
+          passwordConfirm: confirmPassword
+        })
       });
   
       const data = await response.json();

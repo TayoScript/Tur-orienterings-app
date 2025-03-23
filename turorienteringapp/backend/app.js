@@ -4,12 +4,17 @@ const userRouter = require("./routes/userRoutes");
 const tourRouteRouter = require("./routes/tourRouteRoutes");
 
 // Load environment variables from the config.env file
-require("dotenv").config({ path: "./config.env" });
+require("dotenv").config({ path: "./.env" });
 
 const app = express();
 
 // Use CORS middleware to handle CORS
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://tur-orienterings-app.onrender.com'] 
+    : 'http://localhost:3000',
+  credentials: true
+}));
 
 // Middleware
 app.use(express.json());

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from "react-google-recaptcha";
 import './Register.css';
+import API_BASE_URL from '../config';
 
 function Register() {
 
@@ -60,10 +61,17 @@ function Register() {
 
     try {
       setErrorMessage(""); // Clear any previous errors
-      const response = await fetch('http://localhost:8000/api/v1/users/register', {
+      const response = await fetch(`${API_BASE_URL}/api/v1/users/register`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          password: formData.password,
+          passwordConfirm: formData.confirmPassword,
+        }),
       });
       const data = await response.json();
 
