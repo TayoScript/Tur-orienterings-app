@@ -2,8 +2,13 @@ services:
   - type: web
     name: tur-orienterings-app
     env: static
-    buildCommand: cd turorienteringapp/frontend && npm install && npm run build
+    buildCommand: cd turorienteringapp/frontend && npm install && CI=false npm run build
     staticPublishPath: ./turorienteringapp/frontend/build
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CI
+        value: false
     routes:
       - type: rewrite
         source: /*
