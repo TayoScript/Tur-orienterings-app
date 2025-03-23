@@ -2,7 +2,6 @@
   "name": "turorienteringapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
   "dependencies": {
     "@turf/turf": "^6.5.0",
     "axios": "^1.5.1",
@@ -16,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test --watchAll"
   },
   "browserslist": "defaults",
