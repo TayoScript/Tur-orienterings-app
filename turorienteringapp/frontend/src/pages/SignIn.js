@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import ReCAPTCHA from "react-google-recaptcha";
 import { useAuth } from '../components/AuthContext';
 import { decodeToken } from '../components/AuthUtils';
@@ -51,7 +51,7 @@ function SignIn() {
 
         try {
             // Sending a POST request to the backend to login
-            const response = await fetch('http://localhost:8000/api/v1/users/login', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin',

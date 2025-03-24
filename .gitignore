@@ -5,6 +5,7 @@ turorienteringapp/backend/.DS_Store
 
 # For frontend
 turorienteringapp/frontend/node_modules/
+turorienteringapp/frontend/.env
 
 # General ignores
 .DS_Store

@@ -23,7 +23,7 @@ const PublishedRoutes = () => {
     const fetchRoutes = async () => {
         try {
             const token = localStorage.getItem('token');// token from local storge
-            const response = await axios.get('http://localhost:8000/api/v1/tourRoutes/getAllPublishedTourRoutes', {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/tourRoutes/getAllPublishedTourRoutes`, {
                 headers: { Authorization: `Bearer ${token}` } //----->added the token to to authorization header
             });
             const publishedRoutes = response.data.data.tourRoutes || [];

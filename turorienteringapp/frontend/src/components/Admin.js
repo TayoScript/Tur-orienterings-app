@@ -13,15 +13,12 @@ const Admin = () => {
     // Fetch Users from the backend  and set them in colom lista 
     const fetchUsers = async () => {
         try {
-            // Retrieve the token from local storage
             const token = localStorage.getItem('token');
-
-            // If there's no token, throw an error or handle as needed
             if (!token) {
-                throw new Error('No token found');
+                throw new Error('Authentication token not found');
             }
 
-            const response = await fetch('http://localhost:8000/api/v1/users', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -48,7 +45,7 @@ const Admin = () => {
             if (!token) {
                 throw new Error('Authentication token not found');
             }
-            const response = await fetch('http://localhost:8000/api/v1/tourRoutes', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/tourRoutes`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -76,20 +73,12 @@ const Admin = () => {
 
     const handlePromoteUser = async (userId) => {
         try {
-
-            // Confirmation dialog
-            const isConfirmed = window.confirm("Are you sure you want to promote this user to admin?");
-            if (!isConfirmed) {
-                return;
-            }
-
             const token = localStorage.getItem('token');
             if (!token) {
-                console.error('No authentication token found');
-                return;
+                throw new Error('Authentication token not found');
             }
 
-            const response = await fetch(`http://localhost:8000/api/v1/users/promoteToAdmin/${userId}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/promoteToAdmin/${userId}`, {
                 method: 'PATCH',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -129,7 +118,7 @@ const Admin = () => {
                 return;
             }
 
-            const response = await fetch(`http://localhost:8000/api/v1/tourRoutes/${routeId}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/tourRoutes/${routeId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -171,7 +160,7 @@ const Admin = () => {
                 return;
             }
 
-            const response = await fetch(`http://localhost:8000/api/v1/users/${userId}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`

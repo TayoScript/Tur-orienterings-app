@@ -23,7 +23,7 @@ const UserProfile = () => {
     const fetchUserData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/api/v1/users/myProfile",
+          `${process.env.REACT_APP_API_URL}/api/v1/users/myProfile`,
           {
             method: "GET",
             headers: {
@@ -69,7 +69,7 @@ const UserProfile = () => {
     // Sends the updated userdata to the backend via a patch request, which then persists the updated userdata.
     try {
       const response = await fetch(
-        "http://localhost:8000/api/v1/users/updateMyProfile",
+        `${process.env.REACT_APP_API_URL}/api/v1/users/updateMyProfile`,
         {
           method: "PATCH",
           headers: {

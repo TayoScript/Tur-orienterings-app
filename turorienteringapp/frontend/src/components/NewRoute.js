@@ -159,10 +159,12 @@ const NewRoute = () => {
     // Send a POST request to the backend to save the route
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/tourRoutes/newTourRoute",
+        `${process.env.REACT_APP_API_URL}/api/v1/tourRoutes/newTourRoute`,
         { name, coordinates, published },
         {
-          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
       );
 

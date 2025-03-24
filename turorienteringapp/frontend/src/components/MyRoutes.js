@@ -28,7 +28,7 @@ const MyRoutes = () => {
         }
 
         try {
-            await axios.delete(`http://localhost:8000/api/v1/tourRoutes/${routeId}`, {
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/v1/tourRoutes/${routeId}`, {
                 headers: { 'Authorization': `Bearer ${userToken}` }
             });
             // Refresh routes after delete route
@@ -48,7 +48,7 @@ const MyRoutes = () => {
         }
 
         try {
-            const response = await axios.get('http://localhost:8000/api/v1/tourRoutes/getIndividualUsersTourRoutes', {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/tourRoutes/getIndividualUsersTourRoutes`, {
                 headers: { 'Authorization': `Bearer ${userToken}` }
             });
             setRoutes(response.data.data.tourRoutes || []);
