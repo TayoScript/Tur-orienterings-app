@@ -112,7 +112,7 @@ function Register() {
 
           {/* reCAPTCHA widget */}
           <ReCAPTCHA
-            sitekey="6LetW-koAAAAAJsLZtyr9Lf7ShzcAhXntNqU60Ke"
+            sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
             onChange={value => setRecaptchaValue(value)}
           />
 

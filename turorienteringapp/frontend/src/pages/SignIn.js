@@ -144,7 +144,7 @@ function SignIn() {
                     </div>
                     {/* Adding reCAPTCHA */}
                     <ReCAPTCHA
-                        sitekey="6LetW-koAAAAAJsLZtyr9Lf7ShzcAhXntNqU60Ke"
+                        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
                         onChange={(value) => setIsVerified(Boolean(value))}
                     />
                     {/* Submit button to log in */}
