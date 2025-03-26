@@ -12,8 +12,8 @@ mongoose
   .then(() => {
     console.log("DB connection successfull!");
   })
-  .catch(() => {
-    console.error("Error connecting to the database");
+  .catch((err) => {
+    console.error("Error connecting to the database",err);
   });
 
 // Sets port to PORT variable in config.env
