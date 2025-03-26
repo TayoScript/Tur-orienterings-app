@@ -37,9 +37,10 @@ exports.signup = async (req, res) => {
       },
     });
   } catch (err) {
+    console.error(" Signup Error:", err); // <- This will show in Render logs
     res.status(400).json({
       status: "fail",
-      message: "Error registering new user",
+      message: err.message || "Error registering new user",
     });
   }
 };
