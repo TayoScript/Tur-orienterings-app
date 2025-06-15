@@ -1,6 +1,6 @@
 # TurRuter
 
-Welcome to TurRuter! This project is developed by group5 for PROG2052 at NTNU.
+Welcome to TurRuter! 
 
 ## Table of Contents
 
@@ -78,11 +78,3 @@ Before beginning, make sure you have installed:
       npm start
       ```
 
-
-
-## Credits
-
-Developed by:
-1. Christopher Andreas Kindlien
-2. Ahmad Masoud Mzafar
-3. Omotayo Farouk Lawal
