@@ -3,18 +3,30 @@ const cors = require("cors");
 const userRouter = require("./routes/userRoutes");
 const tourRouteRouter = require("./routes/tourRouteRoutes");
 
-// Load environment variables from the config.env file
-require("dotenv").config({ path: "./.env" });
-
 const app = express();
 
-// Use CORS middleware to handle CORS
-app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://tur-orienterings-app.onrender.com'] 
-    : 'http://localhost:3000',
-  credentials: true
-}));
+const defaultAllowedOrigins = [
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+  "https://tur-orienterings-app.onrender.com",
+];
+
+const allowedOrigins = process.env.CORS_ORIGINS
+  ? process.env.CORS_ORIGINS.split(",").map((origin) => origin.trim())
+  : defaultAllowedOrigins;
+
+// Allow known browser origins and non-browser requests without Origin header (Postman/curl).
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error(`Not allowed by CORS: ${origin}`));
+    },
+    credentials: true,
+  })
+);
 
 // Middleware
 app.use(express.json());
