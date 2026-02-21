@@ -15,11 +15,7 @@ const DeleteUser = () => {
   
   const handleDeleteAccount = async () => {
     try {
-<<<<<<< Updated upstream
       const token = localStorage.getItem('token');
-=======
-      const token = localStorage.getItem("token");
->>>>>>> Stashed changes
       const response = await fetch(`${API_BASE_URL}/api/v1/users/deleteMyProfile`, {
         method: 'DELETE',
         headers: {
